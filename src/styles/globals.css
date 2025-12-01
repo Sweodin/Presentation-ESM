@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primära färger */
+  --esm-green-primary: #2AAE82;
+  --esm-green-secondary: #27B1A6;
+  --esm-green-dark: #17818E;
+  
+  /* Neutrala */
+  --esm-gray-dark: #2D3748;
+  --esm-gray-medium: #718096;
+  --esm-gray-light: #E2E8F0;
+  --esm-white: #FFFFFF;
+  
+  /* Accentfärger för data */
+  --esm-red: #E53E3E;
+  --esm-yellow: #ECC94B;
+  --esm-blue: #4299E1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
