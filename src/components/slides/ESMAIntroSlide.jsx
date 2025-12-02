@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import aiImg from '../../assets/concepts/ai.png';
 
 export default function ESMAIntroSlide({ slide }) {
   const [visiblePoints, setVisiblePoints] = useState([]);
@@ -14,7 +15,13 @@ export default function ESMAIntroSlide({ slide }) {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center p-16 bg-gradient-to-br from-blue-50 to-purple-50">
-      <div className="text-8xl mb-8 animate-pulse">🤖</div>
+      <div className="mb-8 animate-pulse">
+        <img
+          src={aiImg}
+          alt="ESMA AI"
+          className="w-40 h-40 object-contain rounded-3xl shadow-2xl border-4 border-white/80"
+        />
+      </div>
       
       <h1 className="text-6xl font-bold text-gray-800 mb-20 text-center max-w-5xl">
         {slide.title}

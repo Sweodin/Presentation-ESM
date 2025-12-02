@@ -109,13 +109,13 @@ export default function Summary({ concept, results, onBack, onRestart }) {
   const co2Percentage = ((totals.co2 / data.current.co2) * 100).toFixed(1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-800 mb-3">
             🎉 Sammanfattning
           </h1>
-          <h2 className="text-3xl text-gray-700">
+          <h2 className="text-2xl text-gray-700">
             {concept === 'trivsel' && 'TrivselBo'}
             {concept === 'social' && 'SocialBo'}
             {concept === 'kultur' && 'KulturBo'}
@@ -124,27 +124,27 @@ export default function Summary({ concept, results, onBack, onRestart }) {
           </h2>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-2xl p-12 mb-8">
-          <h3 className="text-3xl font-semibold text-gray-800 mb-8 text-center">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 mb-6">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
             Med valda åtgärder uppnår ni:
           </h3>
 
-          <div className="grid grid-cols-3 gap-8 mb-12">
-            <div className="text-center p-6 bg-green-50 rounded-2xl border-2 border-green-200">
-              <div className="text-5xl mb-4">💰</div>
-              <div className="text-sm text-gray-600 mb-2 font-medium">Besparing</div>
-              <div className="text-3xl font-bold text-green-600 mb-2">
+          <div className="grid grid-cols-3 gap-6 mb-10">
+            <div className="text-center p-4 bg-green-50 rounded-2xl border-2 border-green-200">
+              <div className="text-4xl mb-3">💰</div>
+              <div className="text-xs text-gray-600 mb-1 font-medium">Besparing</div>
+              <div className="text-2xl font-bold text-green-600 mb-1">
                 {totals.savings.toLocaleString('sv-SE')} kr/år
               </div>
-              <div className="text-lg text-green-700 font-semibold">
+              <div className="text-base text-green-700 font-semibold">
                 -{savingsPercentage}%
               </div>
             </div>
 
-            <div className="text-center p-6 bg-green-50 rounded-2xl border-2 border-green-200">
-              <div className="text-5xl mb-4">🌍</div>
-              <div className="text-sm text-gray-600 mb-2 font-medium">CO₂-minskning</div>
-              <div className="text-3xl font-bold text-green-600 mb-2">
+            <div className="text-center p-4 bg-green-50 rounded-2xl border-2 border-green-200">
+              <div className="text-4xl mb-3">🌍</div>
+              <div className="text-xs text-gray-600 mb-1 font-medium">CO₂-minskning</div>
+              <div className="text-2xl font-bold text-green-600 mb-1">
                 {totals.co2} ton/år
               </div>
               <div className="text-lg text-green-700 font-semibold">
@@ -152,33 +152,33 @@ export default function Summary({ concept, results, onBack, onRestart }) {
               </div>
             </div>
 
-            <div className="text-center p-6 bg-blue-50 rounded-2xl border-2 border-blue-200">
-              <div className="text-5xl mb-4">⏱️</div>
-              <div className="text-sm text-gray-600 mb-2 font-medium">Återbetalningstid</div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">
+            <div className="text-center p-4 bg-blue-50 rounded-2xl border-2 border-blue-200">
+              <div className="text-4xl mb-3">⏱️</div>
+              <div className="text-xs text-gray-600 mb-1 font-medium">Återbetalningstid</div>
+              <div className="text-2xl font-bold text-blue-600 mb-1">
                 {paybackYears} år
               </div>
-              <div className="text-lg text-blue-700 font-semibold">
+              <div className="text-base text-blue-700 font-semibold">
                 ROI: {(100 / paybackYears).toFixed(1)}%/år
               </div>
             </div>
           </div>
 
-          <div className="h-96 mb-8">
+          <div className="h-80 mb-6">
             <Bar data={chartData} options={chartOptions} />
           </div>
 
-          <div className="bg-gradient-to-r from-esm-green-primary to-esm-green-secondary text-white p-8 rounded-2xl text-center">
-            <h4 className="text-2xl font-bold mb-3">
+          <div className="bg-gradient-to-r from-esm-green-primary to-esm-green-secondary text-white p-6 rounded-2xl text-center">
+            <h4 className="text-xl font-bold mb-2">
               Total investering: {totals.investment.toLocaleString('sv-SE')} kr
             </h4>
-            <p className="text-lg opacity-90">
+            <p className="text-base opacity-90">
               Ger en årlig besparing på {totals.savings.toLocaleString('sv-SE')} kr och minskar CO₂-utsläppen med {totals.co2} ton
             </p>
           </div>
         </div>
 
-        <div className="flex justify-center gap-6">
+        <div className="flex justify-center gap-6 mt-4">
           <button
             onClick={onBack}
             className="bg-gray-600 text-white px-10 py-4 rounded-xl text-xl

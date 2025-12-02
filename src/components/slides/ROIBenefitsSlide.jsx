@@ -1,6 +1,16 @@
 import { useState, useEffect } from 'react';
+import savingsImg from '../../assets/concepts/lönsamhet.png';
+import insightsImg from '../../assets/concepts/projektering.png';
+import valueImg from '../../assets/concepts/Fast-Villa-Vide.png';
+import safetyImg from '../../assets/concepts/förvaltade hus.png';
 
 export default function ROIBenefitsSlide({ slide }) {
+  const roiImages = {
+    savings: savingsImg,
+    insights: insightsImg,
+    value: valueImg,
+    safety: safetyImg
+  };
   const [visibleBenefits, setVisibleBenefits] = useState([]);
 
   useEffect(() => {
@@ -23,21 +33,34 @@ export default function ROIBenefitsSlide({ slide }) {
       </h1>
       
       <div className="grid grid-cols-2 gap-8 max-w-6xl w-full">
-        {slide.benefits.map((benefit, index) => (
-          <div
-            key={index}
-            className={`bg-white rounded-2xl p-10 shadow-xl border-4 border-esm-green-primary
-                       transition-all duration-500 transform
-                       ${visibleBenefits.includes(index) 
-                         ? 'opacity-100 scale-100' 
-                         : 'opacity-0 scale-90'}`}
-          >
-            <div className="text-7xl mb-6 text-center">{benefit.icon}</div>
-            <p className="text-2xl text-gray-800 text-center leading-relaxed font-medium">
-              {benefit.text}
-            </p>
-          </div>
-        ))}
+        {slide.benefits.map((benefit, index) => {
+          const imgSrc = benefit.image && roiImages[benefit.image];
+          return (
+            <div
+              key={index}
+              className={`bg-white rounded-2xl p-10 shadow-xl border-4 border-esm-green-primary
+                         transition-all duration-500 transform
+                         ${visibleBenefits.includes(index) 
+                           ? 'opacity-100 scale-100' 
+                           : 'opacity-0 scale-90'}`}
+            >
+              <div className="mb-6 flex justify-center items-center">
+                {imgSrc ? (
+                  <img
+                    src={imgSrc}
+                    alt={benefit.text}
+                    className="w-24 h-24 object-cover rounded-2xl border-2 border-esm-green-primary/60 shadow-md"
+                  />
+                ) : (
+                  <div className="text-7xl text-center">{benefit.icon}</div>
+                )}
+              </div>
+              <p className="text-2xl text-gray-800 text-center leading-relaxed font-medium">
+                {benefit.text}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 export default function ActionCard({ action, isSelected, onToggle }) {
   return (
     <div
-      className={`p-6 rounded-xl border-2 cursor-pointer transition-all duration-200
+      className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-200
                   ${isSelected 
                     ? 'border-esm-green-primary bg-green-50 shadow-md' 
                     : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'}`}
@@ -16,11 +16,11 @@ export default function ActionCard({ action, isSelected, onToggle }) {
           onClick={(e) => e.stopPropagation()}
         />
         <div className="flex-1">
-          <h3 className="text-xl font-semibold text-gray-800 mb-3">
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">
             {action.name}
           </h3>
-          <p className="text-sm text-gray-600 mb-3 italic">{action.description}</p>
-          <div className="space-y-1 text-base text-gray-700">
+          <p className="text-xs text-gray-600 mb-2 italic">{action.description}</p>
+          <div className="space-y-1 text-sm text-gray-700">
             <div>
               <span className="font-medium">Investering:</span>{' '}
               <span className="font-semibold text-gray-800">

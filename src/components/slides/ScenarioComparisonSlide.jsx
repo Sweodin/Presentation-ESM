@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 
+const formatMillions = (value) => {
+  const millions = value / 1_000_000;
+  return millions.toFixed(1).replace('.', ',') + ' Mkr';
+};
+
 export default function ScenarioComparisonSlide({ slide }) {
   const [showScenarioA, setShowScenarioA] = useState(false);
 
@@ -14,16 +19,28 @@ export default function ScenarioComparisonSlide({ slide }) {
     labels: ['Årlig kostnad', 'Efter 10 år'],
     datasets: [
       {
-        label: 'Utan investering',
-        data: [450000, 4500000],
+        label: 'Utan Projekt',
+        // Värden i Mkr för tydligare visualisering
+        data: [4.5, 45],
         backgroundColor: '#E53E3E',
-        borderRadius: 8,
+        borderColor: '#9B2C2C',
+        borderWidth: 2,
+        borderRadius: 12,
+        barThickness: 55,
+        categoryPercentage: 0.5,
+        barPercentage: 0.3,
       },
       {
-        label: 'Med ESM',
-        data: [205000, 2050000 + slide.scenarioA.investment],
+        label: 'Med Projekt',
+        // Värden i Mkr för tydligare visualisering
+        data: [3.0, 30],
         backgroundColor: '#2AAE82',
-        borderRadius: 8,
+        borderColor: '#046c4e',
+        borderWidth: 2,
+        borderRadius: 12,
+        barThickness: 55,
+        categoryPercentage: 0.5,
+        barPercentage: 0.3,
       }
     ]
   };
@@ -44,8 +61,9 @@ export default function ScenarioComparisonSlide({ slide }) {
     scales: {
       y: {
         beginAtZero: true,
+        suggestedMax: 50,
         ticks: {
-          callback: (value) => (value / 1000000).toFixed(1) + ' Mkr',
+          callback: (value) => value.toFixed(1).replace('.', ',') + ' Mkr',
           font: { size: 16, family: 'Poppins' }
         }
       },
@@ -78,6 +96,12 @@ export default function ScenarioComparisonSlide({ slide }) {
               <span className="text-5xl">💸</span>
               <p className="text-2xl text-gray-700">{slide.scenarioB.lost}</p>
             </div>
+            {slide.scenarioB.note && (
+              <div className="flex items-center gap-4">
+                <span className="text-5xl">🏚️</span>
+                <p className="text-2xl text-gray-700">{slide.scenarioB.note}</p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -90,21 +114,23 @@ export default function ScenarioComparisonSlide({ slide }) {
           </h2>
           <div className="space-y-4">
             <div className="bg-white rounded-xl p-4">
-              <p className="text-lg text-gray-600">Engångsinvestering</p>
+              <p className="text-lg text-gray-600">Investering</p>
               <p className="text-3xl font-bold text-gray-800">
-                {slide.scenarioA.investment.toLocaleString('sv-SE')} kr
+                {formatMillions(slide.scenarioA.investment)}
               </p>
             </div>
             <div className="bg-white rounded-xl p-4">
-              <p className="text-lg text-gray-600">Årlig besparing</p>
+              <p className="text-lg text-gray-600">Ökat driftnetto</p>
               <p className="text-3xl font-bold text-green-600">
-                {slide.scenarioA.annualSavings.toLocaleString('sv-SE')} kr/år
+                {formatMillions(slide.scenarioA.annualSavings)}/år
               </p>
             </div>
             <div className="bg-white rounded-xl p-4">
-              <p className="text-lg text-gray-600">Återbetalningstid</p>
+              <p className="text-lg text-gray-600">Ökat värde</p>
               <p className="text-3xl font-bold text-blue-600">
-                {slide.scenarioA.payback} år
+                {slide.scenarioA.increasedValue
+                  ? formatMillions(slide.scenarioA.increasedValue)
+                  : `${slide.scenarioA.payback} år`}
               </p>
             </div>
           </div>

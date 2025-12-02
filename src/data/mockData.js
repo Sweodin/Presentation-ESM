@@ -214,8 +214,24 @@ export const propertyData = {
 };
 
 export const concepts = [
-  { id: 'trivsel', name: 'TrivselBo', icon: '🏠', color: 'bg-green-500' },
+  { id: 'trivsel', name: 'TrivselBo', icon: 'public/TrivselBo.png', color: 'bg-green-500' },
   { id: 'social', name: 'SocialBo', icon: '🤝', color: 'bg-blue-500' },
   { id: 'kultur', name: 'KulturBo', icon: '🏛️', color: 'bg-purple-500' },
   { id: 'service', name: 'ServiceBo', icon: '🏥', color: 'bg-teal-500' }
 ];
+
+/*  const base = import.meta.env.BASE_URL;
+
+export const concepts = [
+  { id: 'trivsel', name: 'TrivselBo', icon: `${base}TrivselBo.png`, color: 'bg-green-500' },
+  { id: 'social', name: 'SocialBo', icon: `${base}SocialBo.png`, color: 'bg-blue-500' },
+  { id: 'kultur', name: 'KulturBo', icon: `${base}KulturBo.png`, color: 'bg-purple-500' },
+  { id: 'service', name: 'ServiceBo', icon: `${base}ServiceBo.png`, color: 'bg-teal-500' }
+]; / ../data/mockData.js */
+
+/* export const concepts = [
+  { id: 'trivsel', name: 'TrivselBo', icon: '/TrivselBo.png', color: 'bg-green-500' },
+  { id: 'social', name: 'SocialBo', icon: '/SocialBo.png', color: 'bg-blue-500' },
+  { id: 'kultur', name: 'KulturBo', icon: '/KulturBo.png', color: 'bg-purple-500' },
+  { id: 'service', name: 'ServiceBo', icon: '/ServiceBo.png', color: 'bg-teal-500' }
+]; */

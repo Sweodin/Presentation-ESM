@@ -49,7 +49,7 @@ export default function ActionPlanner({ concept, onContinue, onBack }) {
   const afterCO2 = data.current.co2 - totals.co2;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
       <button 
         onClick={onBack}
         className="text-esm-green-primary hover:text-esm-green-dark mb-8 text-lg font-medium
@@ -58,8 +58,8 @@ export default function ActionPlanner({ concept, onContinue, onBack }) {
         ← Tillbaka
       </button>
 
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 mb-12">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-3xl font-bold text-gray-800 mb-8">
           {concept === 'trivsel' && 'TrivselBo'}
           {concept === 'social' && 'SocialBo'}
           {concept === 'kultur' && 'KulturBo'}
@@ -67,15 +67,15 @@ export default function ActionPlanner({ concept, onContinue, onBack }) {
           {' – '}{data.name}
         </h1>
         
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-2 gap-6 items-start">
           {/* Vänster kolumn: Åtgärder */}
           <div>
-            <h2 className="text-2xl font-semibold text-gray-700 mb-6 flex items-center gap-3">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-4 flex items-center gap-3">
               <span className="text-3xl">🤖</span>
               AI-föreslagna åtgärder
             </h2>
             
-            <div className="space-y-4">
+            <div className="space-y-3">
               {data.actions.map((action, index) => (
                 <ActionCard
                   key={action.id}
@@ -88,13 +88,13 @@ export default function ActionPlanner({ concept, onContinue, onBack }) {
           </div>
           
           {/* Höger kolumn: Prognos */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl sticky top-8 h-fit">
-            <h2 className="text-2xl font-semibold text-gray-700 mb-6 flex items-center gap-3">
+          <div className="bg-white p-6 rounded-2xl shadow-xl sticky top-4 h-fit">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-4 flex items-center gap-3">
               <span className="text-3xl">📊</span>
               Prognos efter åtgärder
             </h2>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               <SummaryMetric
                 label="Total investering"
                 value={`${totals.investment.toLocaleString('sv-SE')} kr`}
@@ -133,9 +133,9 @@ export default function ActionPlanner({ concept, onContinue, onBack }) {
               
               <button 
                 onClick={() => onContinue({ totals, afterEnergy, afterCO2, paybackYears })}
-                className="w-full bg-esm-green-primary text-white py-4 rounded-xl
+                className="w-full bg-esm-green-primary text-white py-3 rounded-xl
                          text-lg font-semibold hover:bg-esm-green-dark transition-all
-                         shadow-lg hover:shadow-xl hover:scale-105 mt-6"
+                         shadow-lg hover:shadow-xl hover:scale-105 mt-4"
               >
                 Visa sammanfattning →
               </button>

@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react';
+import trivselBoImg from '../../assets/concepts/TrivselBo.png';
+import socialBoImg from '../../assets/concepts/SocialBo.png';
+import kulturBoImg from '../../assets/concepts/KulturBo.png';
+import serviceBoImg from '../../assets/concepts/ServiceBo.png';
 
 export default function ConceptIntroSlide({ slide }) {
   const [showConcepts, setShowConcepts] = useState(false);
@@ -10,17 +14,10 @@ export default function ConceptIntroSlide({ slide }) {
   }, [slide]);
 
   const conceptIcons = {
-    'TrivselBo': '🏠',
-    'SocialBo': '🤝',
-    'KulturBo': '🏛️',
-    'ServiceBo': '🏥'
-  };
-
-  const conceptColors = {
-    'TrivselBo': 'from-green-400 to-green-600',
-    'SocialBo': 'from-blue-400 to-blue-600',
-    'KulturBo': 'from-purple-400 to-purple-600',
-    'ServiceBo': 'from-teal-400 to-teal-600'
+    TrivselBo: trivselBoImg,
+    SocialBo: socialBoImg,
+    KulturBo: kulturBoImg,
+    ServiceBo: serviceBoImg
   };
 
   return (
@@ -42,15 +39,18 @@ export default function ConceptIntroSlide({ slide }) {
         {slide.concepts.map((concept, index) => (
           <div
             key={index}
-            className={`bg-gradient-to-br ${conceptColors[concept]} 
-                       rounded-3xl p-10 shadow-2xl transform hover:scale-105 
-                       transition-all duration-300`}
+            className={`bg-white rounded-3xl p-4 shadow-2xl transform hover:scale-105 
+                       transition-all duration-300 flex flex-col items-center`}
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            <div className="text-7xl mb-4 text-center filter drop-shadow-lg">
-              {conceptIcons[concept]}
+            <div className="mb-4 w-full h-40 text-center filter drop-shadow-lg flex items-center justify-center">
+              <img
+                src={conceptIcons[concept]}
+                alt={concept}
+                className="w-full h-full object-contain"
+              />
             </div>
-            <h3 className="text-2xl font-bold text-white text-center">
+            <h3 className="text-2xl font-bold text-black text-center">
               {concept}
             </h3>
           </div>

@@ -28,7 +28,10 @@ export default function CostComparisonSlide({ slide }) {
       y: {
         beginAtZero: true,
         ticks: {
-          callback: (value) => value.toLocaleString('sv-SE') + ' kr',
+          callback: (value) => {
+            const millions = value / 1_000_000;
+            return millions.toFixed(1).replace('.', ',') + ' Mkr';
+          },
           font: { size: 18, family: 'Poppins' }
         }
       },
@@ -41,6 +44,7 @@ export default function CostComparisonSlide({ slide }) {
   };
 
   const difference = slide.chart.actual - slide.chart.planned;
+  const differenceMillions = difference / 1_000_000;
   const percentIncrease = ((difference / slide.chart.planned) * 100).toFixed(1);
 
   return (
@@ -66,7 +70,7 @@ export default function CostComparisonSlide({ slide }) {
 
       <div className="mt-8 bg-red-100 border-4 border-red-400 rounded-2xl p-6">
         <p className="text-3xl font-bold text-red-700 text-center">
-          Kostnadsökning: +{difference.toLocaleString('sv-SE')} kr ({percentIncrease}%)
+          Ökning: +{differenceMillions.toFixed(1).replace('.', ',')} Mkr ({percentIncrease}%)
         </p>
       </div>
     </div>

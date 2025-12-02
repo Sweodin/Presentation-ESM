@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { presentationSlides } from '../data/presentationData';
+import aiImg from '../assets/concepts/ai.png';
 import BulletPointsSlide from './slides/BulletPointsSlide';
 import BeforeAfterSlide from './slides/BeforeAfterSlide';
 import TimelineSlide from './slides/TimelineSlide';
@@ -95,7 +96,13 @@ export default function PresentationMode({ onExitToDemo }) {
     if (currentSlide.type === 'interactive-demo') {
       return (
         <div className="h-screen flex flex-col items-center justify-center p-16 bg-gradient-to-br from-purple-50 to-blue-50">
-          <div className="text-9xl mb-12 animate-pulse">🤖</div>
+          <div className="mb-12 animate-pulse">
+            <img
+              src={aiImg}
+              alt="ESMA AI"
+              className="w-44 h-44 object-contain rounded-3xl shadow-2xl border-4 border-white/80"
+            />
+          </div>
           <h1 className="text-7xl font-bold text-gray-800 mb-8 text-center">
             {currentSlide.title}
           </h1>
@@ -163,9 +170,9 @@ export default function PresentationMode({ onExitToDemo }) {
       {renderSlide()}
       
       {/* Navigation Controls */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 
-                    bg-black/70 backdrop-blur text-white px-8 py-4 rounded-full
-                    flex items-center gap-6 z-50">
+      <div className="fixed bottom-6 right-8
+                    bg-black/70 backdrop-blur text-white px-6 py-3 rounded-full
+                    flex items-center gap-4 z-50">
         <button
           onClick={prevSlide}
           disabled={currentSlideIndex === 0}
@@ -214,7 +221,7 @@ export default function PresentationMode({ onExitToDemo }) {
       </div>
 
       {/* Help Overlay (press H) */}
-      <div className="fixed bottom-8 right-8 bg-black/70 backdrop-blur text-white px-6 py-3 rounded-lg text-sm z-50">
+      <div className="fixed top-4 right-8 bg-black/70 backdrop-blur text-white px-6 py-3 rounded-lg text-sm z-40">
         <p>← → Navigera | F Fullskärm | D Demo | Esc Avsluta</p>
       </div>
     </div>

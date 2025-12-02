@@ -5,6 +5,8 @@ import CurrentState from './components/CurrentState';
 import ActionPlanner from './components/ActionPlanner';
 import Summary from './components/Summary';
 import './styles/globals.css';
+import presentationImg from './assets/concepts/Fast-Villa-Vide.png';
+import aiImg from './assets/concepts/ai.png';
 
 function App() {
   const [mode, setMode] = useState('start'); // start, presentation, demo
@@ -74,9 +76,9 @@ function App() {
     return (
       <div className="h-screen flex flex-col items-center justify-center p-16 bg-gradient-to-br from-esm-green-primary to-esm-green-dark">
         <img 
-          src="/ESM_logo_main.jpg" 
+          src={`${import.meta.env.BASE_URL}Logo-with-crown_glowing.png`}
           alt="ESM" 
-          className="h-32 mb-12 object-contain filter drop-shadow-2xl"
+          className="h-64 mb-12 object-contain filter drop-shadow-2xl"
         />
         
         <h1 className="text-8xl font-bold text-white mb-8 text-center filter drop-shadow-lg">
@@ -94,7 +96,14 @@ function App() {
                      hover:scale-105 transition-all duration-300 shadow-2xl
                      hover:shadow-white/50"
           >
-            📊 Starta Presentation
+            <span className="flex items-center gap-4">
+              <img
+                src={presentationImg}
+                alt="Starta presentation"
+                className="w-10 h-10 object-cover rounded-xl border border-esm-green-primary/40"
+              />
+              <span>Starta Presentation</span>
+            </span>
           </button>
           
           <button
@@ -102,7 +111,14 @@ function App() {
             className="bg-esm-green-dark text-white px-16 py-8 rounded-2xl text-3xl font-bold
                      hover:scale-105 transition-all duration-300 shadow-2xl border-4 border-white"
           >
-            🤖 Direkt till ESMA Demo
+            <span className="flex items-center gap-4">
+              <img
+                src={aiImg}
+                alt="ESMA demo"
+                className="w-10 h-10 object-contain rounded-xl border border-white/40 bg-white/80"
+              />
+              <span>Direkt till ESMA Demo</span>
+            </span>
           </button>
         </div>
 

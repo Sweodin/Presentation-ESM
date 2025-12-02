@@ -5,7 +5,7 @@ export default function CurrentState({ concept, onContinue, onBack }) {
   const data = propertyData[concept];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
       <button 
         onClick={onBack}
         className="text-esm-green-primary hover:text-esm-green-dark mb-8 text-lg font-medium
@@ -14,8 +14,8 @@ export default function CurrentState({ concept, onContinue, onBack }) {
         ← Tillbaka
       </button>
       
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-3xl font-bold text-gray-800 mb-1">
           {concept === 'trivsel' && 'TrivselBo'}
           {concept === 'social' && 'SocialBo'}
           {concept === 'kultur' && 'KulturBo'}
@@ -23,11 +23,11 @@ export default function CurrentState({ concept, onContinue, onBack }) {
           {' – Exempelfastighet '}{data.name}
         </h1>
         
-        <p className="text-xl text-gray-600 mb-2">{data.location}</p>
+        <p className="text-lg text-gray-600 mb-1">{data.location}</p>
         
-        <h2 className="text-3xl text-gray-700 mb-12 font-semibold mt-8">Nuläge (2024)</h2>
+        <h2 className="text-2xl text-gray-700 mb-8 font-semibold mt-6">Nuläge (2024)</h2>
         
-        <div className="grid grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-3 gap-6 mb-12">
           <MetricCard
             icon="⚡"
             label="Energikostnad"
@@ -51,10 +51,10 @@ export default function CurrentState({ concept, onContinue, onBack }) {
           />
         </div>
         
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-2">
           <button
             onClick={onContinue}
-            className="bg-esm-green-primary text-white px-12 py-5 rounded-xl text-2xl
+            className="bg-esm-green-primary text-white px-10 py-4 rounded-xl text-xl
                      hover:bg-esm-green-dark transition-all duration-300
                      shadow-lg hover:shadow-xl hover:scale-105 font-semibold"
           >

@@ -1,8 +1,23 @@
 import { useState, useEffect } from 'react';
+import dataCollectionImg from '../../assets/concepts/usb minne.png';
+import analysisImg from '../../assets/concepts/Legosortering.png';
+import calcOptimizationImg from '../../assets/concepts/lönsamhet.png';
+import designImg from '../../assets/concepts/projektering.png';
+import executionImg from '../../assets/concepts/projekt av renovering.png';
+import optimizationImg from '../../assets/concepts/förvaltade hus.png';
 
 export default function ProcessFlowSlide({ slide }) {
   const [visibleSteps, setVisibleSteps] = useState([]);
   const [progress, setProgress] = useState(0);
+
+  const stepImages = [
+    dataCollectionImg,
+    analysisImg,
+    calcOptimizationImg,
+    designImg,
+    executionImg,
+    optimizationImg
+  ];
 
   useEffect(() => {
     setVisibleSteps([]);
@@ -17,37 +32,47 @@ export default function ProcessFlowSlide({ slide }) {
   }, [slide]);
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center p-16 bg-gradient-to-br from-gray-50 to-gray-100">
-      <h1 className="text-6xl font-bold text-gray-800 mb-8 text-center max-w-5xl">
+    <div className="h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-br from-gray-50 to-gray-100">
+      <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center max-w-5xl">
         {slide.title}
       </h1>
       
       {slide.subtitle && (
-        <p className="text-2xl text-gray-500 mb-16 text-center">
+        <p className="text-xl text-gray-500 mb-6 text-center max-w-4xl">
           {slide.subtitle}
         </p>
       )}
 
-      <div className="space-y-8 max-w-5xl w-full mb-12">
-        {slide.steps.map((step, index) => (
-          <div
-            key={index}
-            className={`flex items-center gap-8 bg-white rounded-2xl p-8 shadow-lg
-                       transition-all duration-500 transform
-                       ${visibleSteps.includes(index) 
-                         ? 'opacity-100 translate-x-0' 
-                         : 'opacity-0 -translate-x-10'}`}
-          >
-            <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-esm-green-primary to-esm-green-dark 
-                          rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-              {step.number}
+      <div className="max-w-6xl w-full mb-8 flex-1 flex items-center justify-center">
+        <div className="grid grid-cols-3 gap-6 w-full">
+          {slide.steps.map((step, index) => (
+            <div
+              key={index}
+              className={`bg-white rounded-2xl p-4 shadow-lg flex flex-col items-center text-center
+                         transition-all duration-500 transform
+                         ${visibleSteps.includes(index) 
+                           ? 'opacity-100 translate-y-0' 
+                           : 'opacity-0 translate-y-6'}`}
+            >
+              <div className="flex items-center justify-center mb-2">
+                <div className="w-10 h-10 bg-gradient-to-br from-esm-green-primary to-esm-green-dark 
+                                rounded-full flex items-center justify-center text-white text-lg font-bold shadow-lg">
+                  {step.number}
+                </div>
+              </div>
+              {stepImages[index] && (
+                <img
+                  src={stepImages[index]}
+                  alt={step.title}
+                  className="w-24 h-24 object-cover rounded-xl mb-3"
+                />
+              )}
+              <h3 className="text-lg font-semibold text-gray-800">
+                {step.title}
+              </h3>
             </div>
-            <div className="text-6xl">{step.icon}</div>
-            <h3 className="text-3xl font-semibold text-gray-800 flex-1">
-              {step.title}
-            </h3>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Progress Bar */}
