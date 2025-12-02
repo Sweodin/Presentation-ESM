@@ -1,5 +1,8 @@
 import MetricCard from './MetricCard';
 import { propertyData } from '../data/mockData';
+import energyImg from '../assets/concepts/lönsamhet.png';
+import co2Img from '../assets/concepts/ai.png';
+import maintenanceImg from '../assets/concepts/förvaltade hus.png';
 
 export default function CurrentState({ concept, onContinue, onBack }) {
   const data = propertyData[concept];
@@ -30,6 +33,7 @@ export default function CurrentState({ concept, onContinue, onBack }) {
         <div className="grid grid-cols-3 gap-6 mb-12">
           <MetricCard
             icon="⚡"
+            image={energyImg}
             label="Energikostnad"
             value={`${data.current.energyCost.toLocaleString('sv-SE')} kr`}
             subtitle="per år"
@@ -37,6 +41,7 @@ export default function CurrentState({ concept, onContinue, onBack }) {
           />
           <MetricCard
             icon="🌍"
+            image={co2Img}
             label="CO₂-utsläpp"
             value={`${data.current.co2} ton`}
             subtitle="per år"
@@ -44,6 +49,7 @@ export default function CurrentState({ concept, onContinue, onBack }) {
           />
           <MetricCard
             icon="🔧"
+            image={maintenanceImg}
             label="Underhåll"
             value={`${data.current.maintenance.toLocaleString('sv-SE')} kr`}
             subtitle="per år"

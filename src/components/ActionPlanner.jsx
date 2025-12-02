@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import ActionCard from './ActionCard';
 import ComparisonChart from './ComparisonChart';
 import { propertyData } from '../data/mockData';
+import aiImg from '../assets/concepts/ai.png';
+import chartImg from '../assets/concepts/lönsamhet.png';
 
 function SummaryMetric({ label, value, color, highlight }) {
   const colorClasses = {
@@ -71,7 +73,13 @@ export default function ActionPlanner({ concept, onContinue, onBack }) {
           {/* Vänster kolumn: Åtgärder */}
           <div>
             <h2 className="text-2xl font-semibold text-gray-700 mb-4 flex items-center gap-3">
-              <span className="text-3xl">🤖</span>
+              <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow border border-gray-200">
+                <img
+                  src={aiImg}
+                  alt="AI-förslag"
+                  className="w-8 h-8 object-contain"
+                />
+              </span>
               AI-föreslagna åtgärder
             </h2>
             
@@ -90,7 +98,13 @@ export default function ActionPlanner({ concept, onContinue, onBack }) {
           {/* Höger kolumn: Prognos */}
           <div className="bg-white p-6 rounded-2xl shadow-xl sticky top-4 h-fit">
             <h2 className="text-2xl font-semibold text-gray-700 mb-4 flex items-center gap-3">
-              <span className="text-3xl">📊</span>
+              <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow border border-gray-200">
+                <img
+                  src={chartImg}
+                  alt="Prognos"
+                  className="w-8 h-8 object-contain"
+                />
+              </span>
               Prognos efter åtgärder
             </h2>
             

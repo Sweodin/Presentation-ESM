@@ -149,16 +149,11 @@ function App() {
   // Demo Mode
   return (
     <div className="App">
-      <button
-        onClick={handleBackToStart}
-        className="fixed top-8 left-8 bg-black/50 hover:bg-black/70 text-white px-6 py-3 
-                 rounded-lg transition-colors z-50 text-lg"
-      >
-        ← Tillbaka till start
-      </button>
-
       {view === 'selector' && (
-        <ConceptSelector onSelect={handleConceptSelect} />
+        <ConceptSelector 
+          onSelect={handleConceptSelect} 
+          onBackToStart={handleBackToStart}
+        />
       )}
       
       {view === 'current' && selectedConcept && (

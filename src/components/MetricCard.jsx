@@ -1,4 +1,4 @@
-export default function MetricCard({ icon, label, value, subtitle, color }) {
+export default function MetricCard({ icon, image, label, value, subtitle, color }) {
   const colorClasses = {
     red: 'border-red-400 bg-red-50',
     orange: 'border-orange-400 bg-orange-50',
@@ -10,7 +10,17 @@ export default function MetricCard({ icon, label, value, subtitle, color }) {
 
   return (
     <div className={`p-8 rounded-xl border-4 ${colorClasses[color]} transition-smooth hover:scale-105`}>
-      <div className="text-5xl mb-4">{icon}</div>
+      <div className="mb-4 flex justify-center">
+        {image ? (
+          <img
+            src={image}
+            alt={label}
+            className="w-14 h-14 object-contain"
+          />
+        ) : (
+          <div className="text-5xl">{icon}</div>
+        )}
+      </div>
       <div className="text-sm text-gray-600 mb-2 font-medium">{label}</div>
       <div className="text-3xl font-bold text-gray-800">{value}</div>
       {subtitle && <div className="text-sm text-gray-500 mt-1">{subtitle}</div>}

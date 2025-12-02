@@ -168,6 +168,20 @@ export default function PresentationMode({ onExitToDemo }) {
   return (
     <div className="relative">
       {renderSlide()}
+
+      {/* Click areas for mouse navigation */}
+      <button
+        type="button"
+        onClick={prevSlide}
+        aria-label="Föregående slide"
+        className="fixed inset-y-0 left-0 w-1/3 cursor-pointer z-20 bg-transparent focus:outline-none"
+      />
+      <button
+        type="button"
+        onClick={nextSlide}
+        aria-label="Nästa slide"
+        className="fixed inset-y-0 right-0 w-1/3 cursor-pointer z-20 bg-transparent focus:outline-none"
+      />
       
       {/* Navigation Controls */}
       <div className="fixed bottom-6 right-8

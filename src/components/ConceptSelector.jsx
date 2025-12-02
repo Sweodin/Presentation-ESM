@@ -11,10 +11,19 @@ const conceptImages = {
   service: serviceImg
 };
 
-export default function ConceptSelector({ onSelect }) {
+export default function ConceptSelector({ onSelect, onBackToStart }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col items-center justify-center p-8">
+      {onBackToStart && (
+        <button
+          type="button"
+          onClick={onBackToStart}
+          className="absolute top-8 left-8 bg-black/50 hover:bg-black/70 text-white px-5 py-2 rounded-lg text-sm transition-colors"
+        >
+          Tilbaka till start
+        </button>
+      )}
       <img 
         src={`${import.meta.env.BASE_URL}Logo-with-crown_glowing.png`}
         alt="ESM" 

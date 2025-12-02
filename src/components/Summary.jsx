@@ -1,5 +1,8 @@
 import { Bar } from 'react-chartjs-2';
 import { propertyData } from '../data/mockData';
+import savingsImg from '../assets/concepts/lönsamhet.png';
+import co2Img from '../assets/concepts/projektering.png';
+import timeImg from '../assets/concepts/förvaltade hus.png';
 
 export default function Summary({ concept, results, onBack, onRestart }) {
   const data = propertyData[concept];
@@ -113,7 +116,7 @@ export default function Summary({ concept, results, onBack, onRestart }) {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-3">
-            🎉 Sammanfattning
+            Sammanfattning
           </h1>
           <h2 className="text-2xl text-gray-700">
             {concept === 'trivsel' && 'TrivselBo'}
@@ -131,7 +134,13 @@ export default function Summary({ concept, results, onBack, onRestart }) {
 
           <div className="grid grid-cols-3 gap-6 mb-10">
             <div className="text-center p-4 bg-green-50 rounded-2xl border-2 border-green-200">
-              <div className="text-4xl mb-3">💰</div>
+              <div className="mb-3 flex justify-center">
+                <img
+                  src={savingsImg}
+                  alt="Besparing"
+                  className="w-12 h-12 object-contain rounded-xl border border-green-200"
+                />
+              </div>
               <div className="text-xs text-gray-600 mb-1 font-medium">Besparing</div>
               <div className="text-2xl font-bold text-green-600 mb-1">
                 {totals.savings.toLocaleString('sv-SE')} kr/år
@@ -142,7 +151,13 @@ export default function Summary({ concept, results, onBack, onRestart }) {
             </div>
 
             <div className="text-center p-4 bg-green-50 rounded-2xl border-2 border-green-200">
-              <div className="text-4xl mb-3">🌍</div>
+              <div className="mb-3 flex justify-center">
+                <img
+                  src={co2Img}
+                  alt="CO₂-minskning"
+                  className="w-12 h-12 object-contain rounded-xl border border-green-200"
+                />
+              </div>
               <div className="text-xs text-gray-600 mb-1 font-medium">CO₂-minskning</div>
               <div className="text-2xl font-bold text-green-600 mb-1">
                 {totals.co2} ton/år
@@ -153,7 +168,13 @@ export default function Summary({ concept, results, onBack, onRestart }) {
             </div>
 
             <div className="text-center p-4 bg-blue-50 rounded-2xl border-2 border-blue-200">
-              <div className="text-4xl mb-3">⏱️</div>
+              <div className="mb-3 flex justify-center">
+                <img
+                  src={timeImg}
+                  alt="Återbetalningstid"
+                  className="w-12 h-12 object-contain rounded-xl border border-blue-200"
+                />
+              </div>
               <div className="text-xs text-gray-600 mb-1 font-medium">Återbetalningstid</div>
               <div className="text-2xl font-bold text-blue-600 mb-1">
                 {paybackYears} år
